@@ -1,19 +1,13 @@
 import React from 'react';
 // import './App.scss';
 import TodoFeature from 'features/Todo/pages';
-import { Route, Link, NavLink } from 'react-router-dom';
+import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import AlbumFeature from 'features/Album/pages';
 
 function App() {
   return (
     <div className="app">
       Header
-      <p>
-        <Link to="/todos">Todos</Link>
-      </p>
-      <p>
-        <Link to="/albums">Albums</Link>
-      </p>
       <p>
         <NavLink to="/todos" activeClassName="active-menu">
           Todos
@@ -24,8 +18,11 @@ function App() {
           Albums
         </NavLink>
       </p>
-      <Route path="/todos" component={TodoFeature} />
-      <Route path="/albums" component={AlbumFeature} />
+      <Switch>
+        <Route path="/" component={TodoFeature} exact />
+        <Route path="/todos" component={TodoFeature} />
+        <Route path="/albums" component={AlbumFeature} />
+      </Switch>
       Footer
     </div>
   );
