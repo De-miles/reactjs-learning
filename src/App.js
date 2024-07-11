@@ -6,6 +6,7 @@ import AlbumFeature from 'features/Album/pages';
 import NotFound from 'components/NotFound';
 import productApi from 'api/productApi';
 import CounterFeature from 'features/Counter';
+import Header from 'components/Header';
 
 function App() {
   useEffect(() => {
@@ -21,17 +22,8 @@ function App() {
 
   return (
     <div className="app">
-      Header
-      <p>
-        <NavLink to="/todos" activeClassName="active-menu">
-          Todos
-        </NavLink>
-      </p>
-      <p>
-        <NavLink to="/albums" activeClassName="active">
-          Albums
-        </NavLink>
-      </p>
+      <Header />
+
       <Switch>
         <Redirect from="/home" to="/" exact />
         <Redirect from="/post-list/:postId" to="/posts/:postId" exact />
