@@ -14,6 +14,8 @@ import Login from 'features/Auth/components/Login';
 import Register from 'features/Auth/components/Register';
 import { Box, Menu, MenuItem } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logout } from 'features/Auth/userSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,6 +46,7 @@ const MODE = {
 };
 
 export default function Header() {
+  const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.id;
   const [open, setOpen] = useState(false);
@@ -64,6 +67,11 @@ export default function Header() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogoutClick = () => {
+    const action = logout();
+    dispatch(action);
   };
 
   const classes = useStyles();
@@ -117,7 +125,7 @@ export default function Header() {
         getContentAnchorEl={null}
       >
         <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+        <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
       </Menu>
 
       <Dialog
