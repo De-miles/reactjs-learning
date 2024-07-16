@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
 import productApi from 'api/productApi';
 import ProductSkeletonList from '../components/ProductSkeletonList';
+import ProductList from '../components/ProductList';
 
 ListPage.propTypes = {};
 
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     width: '250px',
   },
   right: {
-    flex: '1 1 auto',
+    flex: '1 1 0',
   },
 }));
 
@@ -31,7 +32,7 @@ function ListPage(props) {
         console.log('Failed to fetch Product list: ', error);
       }
 
-      // setLoading(false);
+      setLoading(false);
     })();
   }, []);
 
@@ -43,7 +44,7 @@ function ListPage(props) {
             <Paper elevation={0}>Left column</Paper>
           </Grid>
           <Grid item className={classes.right}>
-            <Paper elevation={0}>{loading ? <ProductSkeletonList /> : <>Right column</>}</Paper>
+            <Paper elevation={0}>{loading ? <ProductSkeletonList /> : <ProductList data={productList} />}</Paper>
           </Grid>
         </Grid>
       </Container>
