@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import productApi from 'api/productApi';
 
 ListPage.propTypes = {};
 
@@ -16,6 +17,14 @@ const useStyles = makeStyles((theme) => ({
 
 function ListPage(props) {
   const classes = useStyles();
+
+  useEffect(() => {
+    (async () => {
+      const respone = await productApi.getAll({ _page: 1, _limit: 10 });
+      console.log({ respone });
+    })();
+  }, []);
+
   return (
     <Box>
       <Container>
