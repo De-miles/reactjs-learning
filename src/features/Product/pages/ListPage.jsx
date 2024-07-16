@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   root: {},
   left: {
     width: '250px',
+    marginRight: theme.spacing(1),
   },
   right: {
     flex: '1 1 0',
