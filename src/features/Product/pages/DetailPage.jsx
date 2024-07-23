@@ -9,6 +9,8 @@ import ProductMenu from '../components/ProductMenu';
 import ProductDescription from '../components/ProductDescription';
 import ProductAdditional from '../components/ProductAdditional';
 import ProductReviews from '../components/ProductReviews';
+import { useDispatch } from 'react-redux';
+import { addToCart } from 'features/Cart/cartSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 function DetailPage() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const {
     params: { productId },
     url,
@@ -55,8 +58,13 @@ function DetailPage() {
     );
   }
 
-  const handleAddToCartSubmit = (formValues) => {
-    console.log('form submit', formValues);
+  const handleAddToCartSubmit = ({ quantity }) => {
+    const action = addToCart({
+      id: product.id,
+      product,
+      quantity: quantity,
+    });
+    dispatch(action);
   };
 
   return (
