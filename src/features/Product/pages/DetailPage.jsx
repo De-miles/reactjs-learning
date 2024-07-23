@@ -6,6 +6,7 @@ import { useRouteMatch } from 'react-router-dom';
 import useProductDetail from '../hooks/useProductDetail';
 import ProductInfo from '../components/ProductInfo';
 import AddToCartForm from '../components/AddToCartForm';
+import ProductMenu from '../components/ProductMenu';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -57,6 +58,7 @@ function DetailPage() {
             </Grid>
           </Grid>
         </Paper>
+        <ProductMenu />
       </Container>
     </Box>
   );
