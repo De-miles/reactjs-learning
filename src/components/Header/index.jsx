@@ -6,16 +6,17 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import CodeIcon from '@material-ui/icons/Code';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import { AccountCircle, Close } from '@material-ui/icons';
+import { AccountCircle, Close, ShoppingCart } from '@material-ui/icons';
 import Login from 'features/Auth/components/Login';
 import Register from 'features/Auth/components/Register';
-import { Box, Menu, MenuItem } from '@material-ui/core';
+import { Badge, Box, Menu, MenuItem } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { logout } from 'features/Auth/userSlice';
+import { cartItemsCountSelector } from 'features/Cart/selectors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,6 +50,9 @@ export default function Header() {
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.id;
+  const cartItemscount = useSelector(cartItemsCountSelector);
+  const history = useHistory();
+
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -74,6 +78,10 @@ export default function Header() {
     dispatch(action);
   };
 
+  const handleCartClick = () => {
+    history.push('/cart');
+  };
+
   const classes = useStyles();
 
   return (
@@ -95,11 +103,21 @@ export default function Header() {
             <Button color="inherit">Albums</Button>
           </NavLink>
 
+          <NavLink to="/products" className={classes.link}>
+            <Button color="inherit">Products</Button>
+          </NavLink>
+
           {!isLoggedIn && (
             <Button color="inherit" onClick={handleClickOpen}>
               Login
             </Button>
           )}
+
+          <IconButton aria-label="" color="inherit" onClick={handleCartClick}>
+            <Badge badgeContent={cartItemscount} color="secondary">
+              <ShoppingCart />
+            </Badge>
+          </IconButton>
 
           {isLoggedIn && (
             <IconButton color="inherit" onClick={handleUserClick}>
