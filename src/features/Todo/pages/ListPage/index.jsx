@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TodoList from '../../components/TodoList';
 import { useState } from 'react';
 import { useLocation, useHistory, useRouteMatch } from 'react-router-dom';

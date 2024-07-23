@@ -1,7 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import TodoList from '../components/TodoList';
-import { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import ListPage from './ListPage';
 import DetailPage from './DetailPage';

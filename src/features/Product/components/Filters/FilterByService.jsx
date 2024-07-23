@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, TextField, Typography, Button, makeStyles, FormControlLabel, Checkbox } from '@material-ui/core';
+import { Box, Typography, makeStyles, FormControlLabel, Checkbox } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {

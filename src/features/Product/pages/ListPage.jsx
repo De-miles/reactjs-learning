@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
 import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
 import productApi from 'api/productApi';
 import ProductSkeletonList from '../components/ProductSkeletonList';

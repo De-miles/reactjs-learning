@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // import './App.scss';
 import TodoFeature from 'features/Todo/pages';
-import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import AlbumFeature from 'features/Album/pages';
 import NotFound from 'components/NotFound';
-import productApi from 'api/productApi';
 import CounterFeature from 'features/Counter';
 import Header from 'components/Header';
 import ProductFeature from 'features/Product';
